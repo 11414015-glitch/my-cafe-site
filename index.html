@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>山風咖啡｜給想安靜工作與午後休息的人，一杯咖啡和清楚的停留資訊</title>
+<meta name="description" content="教學虛構案例，非真實營業店家；請勿據此到店或聯絡。">
+
+<style>
+  :root{
+    --ink:#f5eee3;
+    --muted:#cbbdaf;
+    --paper:#0b0a09;
+    --card:#171310;
+    --card-soft:#211b16;
+    --line:#3b3027;
+    --brand:#d9a66f;
+    --brand-dark:#9b6840;
+    --wood:#76563d;
+    --warm:#f1d4ad;
+    --pending-bg:#332716;
+    --pending-line:#9a733e;
+    --pending-text:#f1c98e;
+  }
+
+  *{
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:
+      "Noto Sans TC",
+      "PingFang TC",
+      "Heiti TC",
+      sans-serif;
+    line-height:1.75;
+  }
+
+  a{
+    color:var(--brand);
+  }
+
+  .wrap{
+    width:min(960px,100% - 32px);
+    margin:0 auto;
+  }
+
+  header.top{
+    background:#100e0c;
+    border-bottom:1px solid var(--line);
+  }
+
+  .top-inner{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 20px;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 0;
+  }
+
+  .mark{
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:.08em;
+    color:var(--warm);
+  }
+
+  nav ul{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 16px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    font-size:15px;
+  }
+
+  nav a{
+    color:var(--muted);
+    text-decoration:none;
+  }
+
+  nav a:hover,
+  nav a:focus{
+    color:var(--brand);
+  }
+
+  .notice{
+    margin:0;
+    background:var(--pending-bg);
+    border:1px solid var(--pending-line);
+    border-radius:10px;
+    padding:10px 14px;
+    font-size:14px;
+    color:var(--pending-text);
+  }
+
+  main{
+    padding-bottom:48px;
+  }
+
+  section{
+    padding:40px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  section:last-of-type{
+    border-bottom:0;
+  }
+
+  h1{
+    font-size:clamp(30px,6vw,46px);
+    line-height:1.35;
+    margin:.2em 0;
+    color:#fff8ed;
+    letter-spacing:.06em;
+  }
+
+  h2{
+    font-size:clamp(22px,3.8vw,28px);
+    margin:0 0 12px;
+    color:#fff3e1;
+  }
+
+  h3{
+    font-size:17px;
+    margin:0 0 5px;
+    color:#f5dfc5;
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:26px;
+    align-items:start;
+    margin-top:24px;
+  }
+
+  .hero-tagline{
+    font-size:18px;
+    color:var(--muted);
+    margin:.2em 0 1em;
+  }
+
+  /* 四句七字詩：只作首頁氛圍文字 */
+  .poem{
+    margin:22px 0 24px;
+    padding:18px 20px;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(217,166,111,.10),
+        rgba(255,255,255,.025)
+      );
+    border-left:3px solid var(--brand-dark);
+    border-radius:0 14px 14px 0;
+    color:#e8d2b7;
+    letter-spacing:.16em;
+    line-height:2;
+    font-size:16px;
+  }
+
+  .poem p{
+    margin:0;
+  }
+
+  .facts{
+    list-style:none;
+    margin:0 0 20px;
+    padding:0;
+    display:grid;
+    gap:10px;
+  }
+
+  .facts li{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:13px 16px;
+    color:#eee3d6;
+  }
+
+  .facts b{
+    color:var(--brand);
+  }
+
+  .actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    align-items:center;
+  }
+
+  .button{
+    display:inline-block;
+    background:var(--brand-dark);
+    color:#fff8ef;
+    text-decoration:none;
+    border:1px solid #b37c4c;
+    border-radius:999px;
+    padding:11px 22px;
+    font:inherit;
+    font-weight:700;
+    cursor:pointer;
+  }
+
+  .button:hover,
+  .button:focus{
+    background:var(--brand);
+    color:#17110d;
+  }
+
+  .button.off{
+    background:#302821;
+    color:#c7b9aa;
+    border-color:#514238;
+    cursor:not-allowed;
+  }
+
+  .desc{
+    font-size:14px;
+    color:var(--muted);
+    margin:0;
+  }
+
+  .pending{
+    display:inline-block;
+    background:var(--pending-bg);
+    border:1px dashed var(--pending-line);
+    border-radius:6px;
+    padding:2px 8px;
+    font-size:13px;
+    color:var(--pending-text);
+    margin-left:4px;
+  }
+
+  /* 貓咪示意插畫 */
+  .cat-illus{
+    width:100%;
+    max-width:430px;
+    margin:0 auto;
+    display:block;
+    border:1px solid var(--line);
+    border-radius:22px;
+    background:#120f0d;
+  }
+
+  .caption{
+    font-size:13px;
+    color:var(--muted);
+    margin:7px 0 0;
+    text-align:center;
+  }
+
+  .menu-group{
+    margin-bottom:26px;
+  }
+
+  /*
+    桌面維持多欄；
+    手機透過 media query 強制單欄。
+  */
+  .menu-list{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  .menu-list li{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    min-width:0;
+  }
+
+  .name{
+    font-size:18px;
+    font-weight:700;
+    color:#fff1dd;
+    overflow-wrap:anywhere;
+  }
+
+  .price{
+    font-weight:700;
+    color:var(--brand);
+    font-size:19px;
+    white-space:nowrap;
+  }
+
+  .cols{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:16px;
+  }
+
+  .cols div{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 20px;
+    min-width:0;
+  }
+
+  dl{
+    margin:0;
+  }
+
+  dt{
+    font-weight:700;
+    margin-top:12px;
+    color:#f5dfc5;
+  }
+
+  dd{
+    margin:0;
+    color:#e3d5c6;
+  }
+
+  footer{
+    background:#15110f;
+    color:#e8dbcc;
+    padding:24px 0;
+    font-size:14px;
+    border-top:1px solid var(--line);
+  }
+
+  footer .notice{
+    background:transparent;
+    border-color:#71583e;
+    color:#e8cda9;
+    margin-bottom:10px;
+  }
+
+  /* 手機優先的窄畫面防出框 */
+  img,
+  video,
+  svg{
+    max-width:100%;
+  }
+
+  a[href^="tel:"],
+  a[href^="mailto:"],
+  span.num,
+  a.num,
+  b.num,
+  strong.num,
+  time{
+    white-space:nowrap;
+  }
+
+  @media (max-width:760px){
+
+    .wrap{
+      width:calc(100% - 40px);
+    }
+
+    .top-inner{
+      row-gap:8px;
+    }
+
+    nav ul{
+      flex-wrap:nowrap;
+      gap:0 10px;
+      font-size:14px;
+      overflow-x:auto;
+      padding-bottom:2px;
+    }
+
+    nav ul a{
+      white-space:nowrap;
+    }
+
+    .hero-grid{
+      grid-template-columns:1fr;
+    }
+
+    .hero-tagline{
+      font-size:17px;
+    }
+
+    .poem{
+      font-size:15px;
+      letter-spacing:.12em;
+      padding:16px;
+    }
+
+    /*
+      本輪指定：
+      手機菜單固定單欄，避免價格擠出、
+      文字重疊或需要左右滑動。
+    */
+    .menu-list{
+      grid-template-columns:1fr;
+    }
+
+    .menu-list li{
+      padding:16px 20px;
+    }
+
+    .name{
+      font-size:19px;
+    }
+
+    .price{
+      font-size:20px;
+    }
+
+    .actions{
+      align-items:stretch;
+      flex-direction:column;
+    }
+
+    .button{
+      text-align:center;
+      width:100%;
+    }
+
+    .actions .desc{
+      line-height:1.6;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header class="top" id="top">
+  <div class="wrap top-inner">
+    <span class="mark">山風咖啡</span>
+
+    <nav aria-label="頁內導覽">
+      <ul>
+        <li><a href="#about">關於我們</a></li>
+        <li><a href="#menu">菜單</a></li>
+        <li><a href="#space">空間與設備</a></li>
+        <li><a href="#hours">營業資訊</a></li>
+        <li><a href="#contact">聯絡與行動</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. 首頁 -->
+  <section id="hero" aria-labelledby="hero-heading">
+    <div class="wrap">
+
+      <p class="notice" id="notice-top">
+        教學虛構案例，非真實營業店家；請勿據此到店或聯絡。
+      </p>
+
+      <div class="hero-grid">
+
+        <div>
+          <h1 id="hero-heading">山風咖啡</h1>
+
+          <p class="hero-tagline">
+            給想安靜工作與午後休息的人，一杯咖啡和清楚的停留資訊
+          </p>
+
+          <!-- 四句七字詩，只作氛圍文字 -->
+          <div class="poem" aria-label="氛圍詩句">
+            <p>貓影輕搖入夜深</p>
+            <p>杯中暖意伴星沉</p>
+            <p>窗前一盞留閒夢</p>
+            <p>慢把浮光付素心</p>
+          </div>
+
+          <!-- 首頁優先資訊：插座 / Wi-Fi / 停留 -->
+          <ul class="facts">
+            <li>
+              <b>插座</b>：
+              共 18 席；長桌 6 席附插座，其他座位不保證有插座
+            </li>
+
+            <li>
+              <b>Wi-Fi</b>：
+              提供免費 Wi-Fi；不承諾速度，不顯示密碼
+            </li>
+
+            <li>
+              <b>停留</b>：
+              營業平日 14:00 後不限時；營業平日 14:00 前及週末限時 120 分鐘。
+              營業平日明確指週一、週三、週四、週五；週二公休
+            </li>
+
+            <li>
+              <b>營業</b>：
+              週一、週三至週日 11:00–20:00；週二公休
+            </li>
+          </ul>
+
+          <div class="actions">
+            <a class="button" href="#menu">查看菜單</a>
+
+            <button
+              class="button off"
+              type="button"
+              disabled
+              aria-describedby="nav-pending"
+            >
+              導航前往
+            </button>
+
+            <span class="desc" id="nav-pending">
+              缺少已核對的地址與地圖連結，導航暫時不可用。
+              <span class="pending">待教師核對，尚未完成</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- 不需連網的貓咪示意插畫 -->
+        <figure style="margin:0">
+          <svg
+            class="cat-illus"
+            viewBox="0 0 430 300"
+            role="img"
+            aria-label="示意插畫：溫暖咖啡桌旁的貓咪"
+          >
+            <rect width="430" height="300" rx="22" fill="#120f0d"/>
+
+            <!-- 窗 -->
+            <rect
+              x="30"
+              y="30"
+              width="150"
+              height="130"
+              rx="10"
+              fill="#241d18"
+              stroke="#76563d"
+              stroke-width="3"
+            />
+
+            <line
+              x1="105"
+              y1="30"
+              x2="105"
+              y2="160"
+              stroke="#76563d"
+              stroke-width="3"
+            />
+
+            <line
+              x1="30"
+              y1="95"
+              x2="180"
+              y2="95"
+              stroke="#76563d"
+              stroke-width="3"
+            />
+
+            <!-- 月亮 -->
+            <circle cx="140" cy="62" r="19" fill="#d9a66f"/>
+            <circle cx="148" cy="55" r="19" fill="#241d18"/>
+
+            <!-- 桌面 -->
+            <rect x="0" y="210" width="430" height="90" fill="#3b2a20"/>
+
+            <!-- 貓尾巴 -->
+            <path
+              d="M318 216
+                 C370 207 382 166 354 150
+                 C338 141 321 151 326 165
+                 C330 176 345 174 349 165"
+              fill="none"
+              stroke="#c18c5e"
+              stroke-width="12"
+              stroke-linecap="round"
+            />
+
+            <!-- 貓身體 -->
+            <ellipse
+              cx="270"
+              cy="210"
+              rx="68"
+              ry="57"
+              fill="#b77e50"
+            />
+
+            <!-- 貓頭 -->
+            <path
+              d="M215 145
+                 L225 91
+                 L251 111
+                 Q270 103 289 111
+                 L315 91
+                 L325 145
+                 Q329 185 270 191
+                 Q211 185 215 145Z"
+              fill="#c18c5e"
+            />
+
+            <!-- 貓耳 -->
+            <path
+              d="M229 108 L227 93 L248 112Z"
+              fill="#8c5d3c"
+            />
+            <path
+              d="M292 112 L313 93 L311 108Z"
+              fill="#8c5d3c"
+            />
+
+            <!-- 貓臉 -->
+            <circle cx="247" cy="142" r="5" fill="#1a1410"/>
+            <circle cx="293" cy="142" r="5" fill="#1a1410"/>
+
+            <path
+              d="M266 153 Q270 158 274 153"
+              fill="none"
+              stroke="#1a1410"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M270 157 L270 164"
+              stroke="#1a1410"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+
+            <!-- 咖啡杯 -->
+            <ellipse cx="110" cy="231" rx="44" ry="9" fill="#211912"/>
+
+            <path
+              d="M78 187
+                 H140
+                 V220
+                 Q109 239 78 220Z"
+              fill="#f1e2cf"
+              stroke="#b98a60"
+              stroke-width="3"
+            />
+
+            <path
+              d="M140 194
+                 H153
+                 Q170 194 170 207
+                 Q170 220 153 220
+                 H140"
+              fill="none"
+              stroke="#b98a60"
+              stroke-width="3"
+            />
+
+            <!-- 熱氣 -->
+            <path
+              d="M96 174 C88 164 105 158 97 146"
+              fill="none"
+              stroke="#d9a66f"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M118 174 C110 164 127 158 119 146"
+              fill="none"
+              stroke="#d9a66f"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+
+            <!-- 小腳印裝飾 -->
+            <g fill="#9b6840" opacity=".8">
+              <circle cx="365" cy="248" r="5"/>
+              <circle cx="378" cy="242" r="5"/>
+              <circle cx="390" cy="250" r="5"/>
+              <ellipse cx="378" cy="257" rx="7" ry="5"/>
+            </g>
+          </svg>
+
+          <figcaption class="caption">
+            示意圖，待換店家照片
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 2. 關於我們 -->
+  <section id="about" aria-labelledby="about-heading">
+    <div class="wrap">
+      <h2 id="about-heading">關於我們</h2>
+
+      <p class="about-text">
+        山風咖啡是一個虛構的課堂練習店。我們希望替需要安靜工作與短暫休息的人，
+        整理清楚的餐飲與空間資訊。先知道價格、座位和停留規則，
+        再決定這裡是否適合自己。
+      </p>
+    </div>
+  </section>
+
+
+  <!-- 3. 菜單 -->
+  <section id="menu" aria-labelledby="menu-heading">
+    <div class="wrap">
+
+      <h2 id="menu-heading">菜單</h2>
+
+      <p class="desc">
+        價格為新臺幣；品項與價格是教學資料，不含優惠、庫存或過敏原保證。
+      </p>
+
+      <!-- 咖啡 -->
+      <div class="menu-group">
+        <h3>咖啡</h3>
+
+        <ul class="menu-list">
+
+          <li>
+            <span class="name">美式咖啡</span>
+            <p class="desc">清爽的黑咖啡，可選冷或熱</p>
+            <span class="price">120 元</span>
+          </li>
+
+          <li>
+            <span class="name">原味拿鐵</span>
+            <p class="desc">咖啡搭配鮮奶，可選冷或熱</p>
+            <span class="price">150 元</span>
+          </li>
+
+          <li>
+            <span class="name">今日手沖</span>
+            <p class="desc">
+              依當日教學示例呈現風味，不宣稱特定產地或得獎豆
+            </p>
+            <span class="price">180 元</span>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- 非咖啡 -->
+      <div class="menu-group">
+        <h3>非咖啡</h3>
+
+        <ul class="menu-list">
+
+          <li>
+            <span class="name">紅茶</span>
+            <p class="desc">無奶的清爽茶飲，可選冷或熱</p>
+            <span class="price">100 元</span>
+          </li>
+
+          <li>
+            <span class="name">熱可可</span>
+            <p class="desc">可可搭配鮮奶，供應熱飲</p>
+            <span class="price">140 元</span>
+          </li>
+
+          <li>
+            <span class="name">柚香氣泡飲</span>
+            <p class="desc">柚香搭配氣泡水，供應冷飲</p>
+            <span class="price">130 元</span>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- 甜點 -->
+      <div class="menu-group">
+        <h3>甜點</h3>
+
+        <ul class="menu-list">
+
+          <li>
+            <span class="name">原味司康</span>
+            <p class="desc">外層微酥，附一份果醬</p>
+            <span class="price">90 元</span>
+          </li>
+
+          <li>
+            <span class="name">檸檬磅蛋糕</span>
+            <p class="desc">帶檸檬香氣的切片蛋糕</p>
+            <span class="price">110 元</span>
+          </li>
+
+          <li>
+            <span class="name">可可布朗尼</span>
+            <p class="desc">濃郁可可風味的方形蛋糕</p>
+            <span class="price">120 元</span>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 4. 空間與設備 -->
+  <section id="space" aria-labelledby="space-heading">
+    <div class="wrap">
+
+      <h2 id="space-heading">空間與設備</h2>
+
+      <div class="cols">
+
+        <div>
+          <h3>座位</h3>
+          <p class="desc">
+            共 18 席；長桌 6 席附插座，其他座位不保證有插座。
+          </p>
+        </div>
+
+        <div>
+          <h3>Wi-Fi</h3>
+          <p class="desc">
+            提供免費 Wi-Fi；不承諾速度，不顯示密碼。
+          </p>
+        </div>
+
+        <div>
+          <h3>停留時間</h3>
+          <p class="desc">
+            營業平日 14:00 後不限時；營業平日 14:00 前及週末限時 120 分鐘。
+            營業平日明確指週一、週三、週四、週五；週二公休。
+          </p>
+        </div>
+
+        <div>
+          <h3>消費</h3>
+          <p class="desc">
+            每人至少一杯飲品；不另加服務費。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 5. 營業資訊 -->
+  <section id="hours" aria-labelledby="hours-heading">
+    <div class="wrap">
+
+      <h2 id="hours-heading">營業資訊</h2>
+
+      <dl>
+
+        <dt>營業時間</dt>
+        <dd>週一、週三至週日 11:00–20:00</dd>
+
+        <dt>公休</dt>
+        <dd>週二公休</dd>
+
+        <dt>區域</dt>
+        <dd>
+          教學情境設定在台中東區；不是可供導航的地址，步行距離未提供
+        </dd>
+
+        <dt>地址</dt>
+        <dd>
+          待教師課前補入獲准使用、已核對的地址
+          <span class="pending">待教師核對，尚未完成</span>
+        </dd>
+
+        <dt>電話</dt>
+        <dd>
+          待教師課前補入獲准使用、已核對的電話
+          <span class="pending">待教師核對，尚未完成</span>
+        </dd>
+
+      </dl>
+
+    </div>
+  </section>
+
+
+  <!-- 6. 聯絡與行動 -->
+  <section id="contact" aria-labelledby="contact-heading">
+    <div class="wrap">
+
+      <h2 id="contact-heading">聯絡與行動</h2>
+
+      <div class="cols">
+
+        <div>
+          <h3>現在可以做的</h3>
+
+          <p class="desc">
+            看<a href="#menu">菜單</a>與價格、
+            確認<a href="#space">插座與停留規則</a>、
+            查<a href="#hours">營業時間</a>。
+          </p>
+        </div>
+
+        <div>
+          <h3>還不能做的</h3>
+
+          <p class="desc">
+            導航與撥號需要已核對的地址、電話與地圖連結。
+            <span class="pending">待教師核對，尚未完成</span>
+            在補齊並親自開啟核對前，這裡不放連結，也不用假號碼。
+          </p>
+        </div>
+
+        <div>
+          <h3>社群</h3>
+
+          <p class="desc">
+            LINE／Instagram 未提供，不生成帳號、QR Code 或連結。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<footer>
+  <div class="wrap">
+
+    <p class="notice">
+      教學虛構案例，非真實營業店家；請勿據此到店或聯絡。
+    </p>
+
+    <p style="margin:0">
+      山風咖啡 · 課堂練習作品 · 本頁不收集資料，也不會送出任何表單。
+    </p>
+
+  </div>
+</footer>
+
+</body>
+</html>
